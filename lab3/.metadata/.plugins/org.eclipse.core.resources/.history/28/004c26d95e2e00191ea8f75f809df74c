@@ -1,0 +1,117 @@
+public class IntNode {
+			private int data;
+			private	IntNode link;
+		/**
+		 * #2 The no argument constructor	
+		 */
+		public IntNode(){
+			data = 0;
+			link = null;
+		}
+		
+		/**
+		 * #2 The constructor with given node value and link
+		 * @param args
+		 */
+		public IntNode(int _data, IntNode _node) {
+			data = _data;
+			link = _node;
+		}
+		
+		
+		/**
+		 * The getValue method
+		 * @return
+		 */
+		public int getValue() {
+			return data;
+		}
+		
+		/**
+		 * The getLink method
+		 * @param args
+		 */
+		public IntNode getLink() {
+			return link;
+		}
+		
+		/**
+		 * The set value method
+		 * @param args
+		 */
+		public void setValue(int _data) {
+			data = _data;
+		}
+		
+		/**
+		 * The set link method
+		 * @param args
+		 */
+		public void setLink(IntNode node) {
+			link=node;
+		}
+		
+		/**
+		 * The method to get the number of a list
+		 * @param args
+		 */
+		public static int listLength(IntNode head) {
+			int length =1;
+			IntNode pointer = head.link;
+			while (pointer!=null) {
+				length++;
+				pointer = pointer.link;
+			}
+			return length;
+		}
+		
+		
+		/**
+		 * toString method
+		 * @param args
+		 */
+//		public String toString() {
+//			String allValues;
+			//int length = this.listLength(this);
+			//int[] values = int[length];
+//			IntNode start = new IntNode();
+//			start.setValue(this.data);
+//			start.setLink(this);
+//			int i=0;
+//			while(head!=null) {
+				
+				//values[i] =  start.data;
+//				start.link = start.link.link;
+				//i++;
+				//allValues = append(String.valueOf(start.data));
+//			}
+			//return allValues;
+//		}
+		
+		/**
+		 * #10 add a node method
+		 * @param args
+		 */
+		public void addNodeAfterThis(int newdata) {
+			IntNode newnode = new IntNode(newdata,this.link);
+			this.link = newnode;
+		}
+		
+		/**
+		 * #11 search if a linked list starting with head contains a given value data
+		 */
+		public static boolean search(IntNode head, int data) {
+			IntNode test = new IntNode(data,head);
+			
+		}
+		
+		/**
+		 * #12 remove the current node method
+		 * @param args
+		 */
+		public void removeNodeAfterThis() {
+			this.link = this.link.link;
+		}
+		
+		
+}
