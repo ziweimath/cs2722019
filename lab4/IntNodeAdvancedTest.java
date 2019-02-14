@@ -1,4 +1,3 @@
-
 public class IntNodeAdvancedTest {
 
 	public static void main(String[] args) {
@@ -25,7 +24,31 @@ public class IntNodeAdvancedTest {
 		//IntNode myOddList = IntNode.copyOdd(myList1);
 		System.out.println("The odd elements in myList1 is "+IntNode.copyOdd(myList1));
 		System.out.println("Before reverse myList1 is "+ myList1);
-		System.out.println("The reversed myList1 is "+ IntNode.reverse(myList1.getLink()));
+		System.out.println("Before reverse myList2 is "+ myList2);
+		System.out.println("Before reverse myList2 is "+ myList2.getValue());
+		IntNode newNode = new IntNode(myList2.getValue(),null);
+		IntNode newNode1 = new IntNode(1,newNode);
+		System.out.println("The newNode has value is " + newNode.getValue());
+		System.out.println("The newNode1 is " + newNode1);
+		newNode1.addToEnd(5);
+		newNode1.addToEnd(10);
+		System.out.println("The newNode2 is "+ newNode1);
+		System.out.println("The newNode3 is "+ newNode1);
+		//IntNode newNode3 = IntNode.reverse(newNode2);
+		//System.out.pritnln("The reversed newNode2 is " + newNode3); 
+		//int leng = IntNode.listLength(newNode3);
+		//System.out.println("The length of newNode3 is "+ leng);
+		//IntNode lastplace = IntNode.listPosition(newNode3, 4);
+		//System.out.println("The lastplace point to the value is " + lastplace.getValue());
+		System.out.println("The reversed newNode1 is "+ IntNode.reverse(newNode1));
+		System.out.println("The reversed newNode1 is "+ IntNode.reverse(newNode1.getLink()));
+		System.out.println("The reversed newNode1 is "+ IntNode.reverse(newNode1.getLink().getLink()));
+		
+		
+		
+		
+		
 	}
 		
 }
+
