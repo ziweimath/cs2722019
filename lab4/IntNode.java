@@ -209,20 +209,8 @@ public class IntNode {
 		
 		/**
 		 * Lab 4. #6 reverse method
-		 */		
-		
+		 */				
 		public static IntNode reverse (IntNode head) {
-			int length = IntNode.listLength(head);
-			IntNode lastPlace = IntNode.listPosition(head, length);
-			IntNode answer = null;
-			for (IntNode curcor =head; curcor!=null;curcor=curcor.link) {
-				if(answer == null) answer = new IntNode(lastPlace.getValue(),null);
-				answer.addNodeAfterThis(curcor.getValue());
-			}
-			return answer;
-		}
-		
-		public static IntNode reverse1 (IntNode head) {
 			int length = IntNode.listLength(head);
 			IntNode lastPlace = IntNode.listPosition(head, length);
 			IntNode answer =new IntNode(lastPlace.getValue(),null);
@@ -233,3 +221,5 @@ public class IntNode {
 			return answer;
 		}
 }
+
+   
