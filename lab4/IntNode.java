@@ -84,9 +84,10 @@ public class IntNode {
 		 * #10 add a node method
 		 * @param args
 		 */
+		
 		public void addNodeAfterThis(int newdata) {
-			IntNode newnode = new IntNode(newdata,this.link);
-			this.link = newnode;
+			 this.link = new IntNode(newdata,this.link);
+			
 		}
 		
 		/**
@@ -208,11 +209,26 @@ public class IntNode {
 		
 		/**
 		 * Lab 4. #6 reverse method
-		 */
+		 */		
+		
 		public static IntNode reverse (IntNode head) {
+			int length = IntNode.listLength(head);
+			IntNode lastPlace = IntNode.listPosition(head, length);
 			IntNode answer = null;
-			for(IntNode temp = head;temp != null;temp = temp.link) {
-				answer.addNodeAfterThis(temp.getValue());
+			for (IntNode curcor =head; curcor!=null;curcor=curcor.link) {
+				if(answer == null) answer = new IntNode(lastPlace.getValue(),null);
+				answer.addNodeAfterThis(curcor.getValue());
+			}
+			return answer;
+		}
+		
+		public static IntNode reverse1 (IntNode head) {
+			int length = IntNode.listLength(head);
+			IntNode lastPlace = IntNode.listPosition(head, length);
+			IntNode answer =new IntNode(lastPlace.getValue(),null);
+			for (IntNode curcor =head; curcor.link!=null;curcor=curcor.link) {
+				//if(answer == null) answer = new IntNode(lastPlace.getValue(),null);
+				answer.addNodeAfterThis(curcor.getValue());
 			}
 			return answer;
 		}
