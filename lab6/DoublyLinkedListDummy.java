@@ -1,60 +1,103 @@
 
+	/*
+	 * #1 Define the DoublyLinkedListDummy class
+	 */
 
-public class DoublyLinkedListDummyTest {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// Test how DIntNode constructor works
-		DoublyLinkedListDummy newDIntNodeWD = new DoublyLinkedListDummy();
-		System.out.println("The dummy head points to "+newDIntNodeWD.getTail().getData() + "\nThe dummy tail points to " + newDIntNodeWD.getHead().getData());
-		DIntNode newDIntNode = new DIntNode(0,null,null);
-		System.out.println("The data in thos Node is "+newDIntNode.getData()+". The prev node is "+newDIntNode.getPrev()+". The next node is "+newDIntNode.getNext());
-		DIntNode newDIntNode1 = new DIntNode(1,null,null);
-		DIntNode newDIntNode2 = new DIntNode(2,null,null);
-		DIntNode newDIntNode3 = new DIntNode(3,null,null);
-		newDIntNode.setNext(newDIntNode1);
-		newDIntNode1.setNext(newDIntNode2);
-		newDIntNode2.setNext(newDIntNode3);
-		newDIntNode1.setPrev(newDIntNode);
-		newDIntNode2.setPrev(newDIntNode1);
-		newDIntNode3.setPrev(newDIntNode2);
-		System.out.println(newDIntNode);
-		System.out.println(newDIntNode1);
-		System.out.println(newDIntNode2);
-		System.out.println(newDIntNode3);
-		
-		// #4 add method
-		newDIntNodeWD.addEnd(3);
-		System.out.println("The dummy head points to "+newDIntNodeWD.getHead().getNext().getData() + "\nThe dummy tail points to " + newDIntNodeWD.getTail().getPrev().getData());
-		newDIntNodeWD.addEnd(4);
-		System.out.println("The dummy head points to "+newDIntNodeWD.getHead().getNext().getNext().getData() + "\nThe dummy tail points to " + newDIntNodeWD.getTail().getPrev().getData());
-		// #5 removeFromHead method
-		newDIntNodeWD.removeFromHead();
-		System.out.println("The dummy head points to "+newDIntNodeWD.getHead().getNext().getData() + "\nThe dummy tail points to " + newDIntNodeWD.getTail().getPrev().getData());
-		newDIntNodeWD.addEnd(3);
-		newDIntNodeWD.removeFromHead();
-		System.out.println("The dummy head points to "+newDIntNodeWD.getHead().getNext().getData() + "\nThe dummy tail points to " + newDIntNodeWD.getTail().getPrev().getData());
-		//System.out.println("The dummy head points to "+newDIntNodeWD.getTail().getData() + "\nThe dummy tail points to " + newDIntNodeWD.getHead().getData());
-		newDIntNodeWD.addEnd(4);
-		newDIntNodeWD.addEnd(3);
-		newDIntNodeWD.addEnd(1);
-		newDIntNodeWD.addEnd(3);
-		newDIntNodeWD.addEnd(1);
-		//newDIntNodeWD.removeFromHead();
-		//System.out.println("The values in this doublely linked list are "+newDIntNodeWD);
-		//newDIntNodeWD.removeFromHead();
-		//System.out.println("The values in this doublely linked list are "+newDIntNodeWD);
-		//newDIntNodeWD.removeFromHead();
-		System.out.println("The values in this doublely linked list are "+newDIntNodeWD);
-		// int num = newDIntNodeWD.countOccurence(3);
-		System.out.println("The number of value "+ 3 +"appering in this doublely linked is ");
-		
-		
-		
-		
-		
-		
+public class DoublyLinkedListDummy{
+	private DIntNode  head;  
+	private DIntNode tail;  
+	
+	
+	/*
+	 * #2 getter, setter methods for head, tail of this doubly linked list. 
+	 */
+	public DIntNode getHead() {
+		return head;
 	}
+	
+	 public DIntNode getTail() {
+		 return tail;
+	 }
 
+	 public void setHead(DIntNode node) {
+		 head = node;
+	 }
+
+	 public void setTail(DIntNode node) {
+		 tail = node;
+	 }
+	 
+	 /*
+	  * #3 The no-argument constructor
+	  */
+	 public DoublyLinkedListDummy() {
+			head = new DIntNode(0,null,null);
+			tail = new DIntNode(0,null,null);
+			head.setNext(tail);
+			tail.setPrev(head);
+		}
+	 
+	 /*
+	  * #4 The add method
+	  */
+	 public void addEnd(int element) {
+		 DIntNode newNode = new DIntNode(element,null,null);
+		 //this.setTail(newNode);
+		 newNode.setPrev(tail.getPrev());
+		 tail.getPrev().setNext(newNode);
+		 newNode.setNext(tail);
+		 tail.setPrev(newNode);
+		 //this.setHead(newNode);
+		 
+	 }
+	 /**
+	  * #5 The removeFromHead method
+	  * 
+	  * 
+	  */
+	 public void removeFromHead() {
+		 
+		 head.getNext().getNext().setPrev(head);
+		 head = head.getNext();
+	 }
+	 
+	 /**
+	  * #6 toString method
+	  * 
+	  */
+	 public String toString() {
+		 String allValues = Integer.toString(getHead().getData());
+         DIntNode pointer = head.getNext();
+         while (pointer.getNext()!=null) {
+             allValues = allValues + "<->" + pointer.getData();
+             pointer = pointer.getNext();
+         }
+         
+         String allValues1 = Integer.toString(getTail().getPrev().getData());
+         DIntNode pointer1 = tail.getPrev().getPrev();
+         while (pointer1.getPrev()!=null) {
+             allValues1 = allValues1 + "<->" + pointer1.getData();
+             pointer1 = pointer1.getPrev();
+         }
+         String allValues2 ="\nForward "+allValues +"\nBackward "+ allValues1; 
+         return allValues2;  
+	 }
+	 
+	 /**
+	  * #7 countOccurrence method
+	  *
+	  */
+	 public int countOccurence(int e) {
+		int answer = 0;
+		DIntNode pointer = head;
+		while (pointer.getNext()!=null) {
+			if (pointer.getData()==e) {
+				answer++;
+				pointer = pointer.getNext();
+			}
+		}
+		 
+		 return answer;
+		 
+	 }
 }
-
