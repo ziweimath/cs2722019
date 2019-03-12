@@ -1,0 +1,38 @@
+
+public class LinkStack<E> implements  StackInterface<E>{
+	private SNode<E> head;
+	
+	public void push(E _data){
+		head = new SNode<E>(_data,head);
+	}
+	
+	public E pop() {
+		E e = head.getData();
+		head = head.getLink();
+		return e;
+		
+	}
+	
+	public E top() {
+		return head.getData();
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		int ind = 0;
+		SNode<E> cursor = head;
+		while(cursor!=null) {
+			ind++;
+			cursor = cursor.getLink();
+		}
+		return ind;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return head==null;
+	}
+	
+}
