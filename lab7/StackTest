@@ -1,0 +1,23 @@
+
+public class StackTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LinkStack<Integer> test1 = new LinkStack();
+		test1.push(1);
+		test1.push(2);
+		test1.push(3);
+		System.out.println("The no argument constructor has value "+test1.top());
+		System.out.println("The no argument constructor has value "+test1.isEmpty());
+		System.out.println("The no argument constructor has value "+test1.size());
+		
+		LinkStack<String> test2 = new LinkStack();
+		test2.push("A");
+		test2.push("B");
+		test2.push("C");
+		System.out.println("The no argument constructor has value "+test2.top());
+		System.out.println("The no argument constructor has value "+test2.isEmpty());
+		System.out.println("The no argument constructor has value "+test2.size());
+	}
+
+}
