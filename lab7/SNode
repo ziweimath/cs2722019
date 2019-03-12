@@ -1,0 +1,36 @@
+
+public class SNode<E> {
+	private E data;
+	private SNode<E> link;
+	
+	// constructor 
+	public SNode() {
+		data = null;
+		link = null;
+	}
+	
+	// constructor
+	
+	public SNode(E _data, SNode<E> _link) {
+		data = _data;
+		link = _link;
+	}
+	
+	public E getData() {
+		return data;
+	}
+	
+	public SNode<E> getLink() {
+		return link;
+	}
+	
+	public void setData(E _data) {
+		data = _data;
+	}
+	
+	public void setLink(SNode<E> _link) {
+		link = _link;
+	}
+	
+	
+}
