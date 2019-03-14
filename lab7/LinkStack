@@ -1,23 +1,46 @@
 
 public class LinkStack<E> implements  StackInterface<E>{
 	private SNode<E> head;
+	/**
+	 * The no argument constructor which set both data and link null
+	 */
+	public LinkStack (){
+		SNode<E> head = new SNode<E>(null,null);
+	}
 	
+	/**
+	 * The push function add the given data into the stack.
+	 * @param E a value of the type E
+	 *
+	 */
 	public void push(E _data){
 		head = new SNode<E>(_data,head);
 	}
-	
+	/**
+	 * The pop function release the last value in the stack
+	 * @return the value pop function just released
+	 */
 	public E pop() {
+		if(head == null) return null;
 		E e = head.getData();
 		head = head.getLink();
 		return e;
 		
 	}
 	
+	/**
+	 * The top function shows the last value in the stack
+	 * @return the last value sits in the stack
+	 */
 	public E top() {
+		if (head == null) return null;
 		return head.getData();
 	}
 
-	@Override
+	/**
+	 * The size function tells the length of the stack
+	 * @return the number of the value in ths stack
+	 */
 	public int size() {
 		// TODO Auto-generated method stub
 		int ind = 0;
@@ -29,7 +52,10 @@ public class LinkStack<E> implements  StackInterface<E>{
 		return ind;
 	}
 
-	@Override
+	/**
+	 * The isEmpty function tells if the stack is empty or not
+	 * @return true means the stack is empty and false if not
+	 */
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return head==null;
