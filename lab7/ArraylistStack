@@ -1,34 +1,56 @@
 import java.util.ArrayList;
 public class ArraylistStack<E> implements StackInterface<E> {
 	private ArrayList<E> arraylist;
-	@Override
-	public E pop() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * the no argument constructor initialize an arraylist
+	 */
+	public ArraylistStack() {
+		arraylist = new ArrayList<E>();
 	}
-
-	@Override
+	/**
+	 * The pop function release the last value in the stack
+	 * @return the value pop function just released
+	 */
+	public E pop() {
+		if (arraylist==null || arraylist.size()==0) return null;
+		E data = arraylist.get(arraylist.size()-1);
+		arraylist.remove(arraylist.size()-1);
+		return data;
+		// TODO Auto-generated method stub
+	}
+	/**
+	 * The push function add the given data into the stack.
+	 * @param E a value of the type E
+	 *
+	 */
 	public void push(E e) {
 		// TODO Auto-generated method stub
-		
+		arraylist.add(e);
 	}
-
-	@Override
+	/**
+	 * The top function shows the last value in the stack
+	 * @return the last value sits in the stack
+	 */
 	public E top() {
 		// TODO Auto-generated method stub
-		return null;
+		if (arraylist == null || arraylist.size()==0) return null;
+		else return arraylist.get(arraylist.size()-1);
 	}
-
-	@Override
+	/**
+	 * The size function tells the length of the stack
+	 * @return the number of the value in ths stack
+	 */
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return arraylist.size();
 	}
-
-	@Override
+	/**
+	 * The isEmpty function tells if the stack is empty or not
+	 * @return true means the stack is empty and false if not
+	 */
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-		return false;
+		return arraylist.isEmpty();
 	}
 
 }
