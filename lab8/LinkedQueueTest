@@ -1,0 +1,10 @@
+
+public class LinkedQueueTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LinkedQueue<String> que1 = new LinkedQueue("A");
+		System.out.println("The element in que1 is "+que1);
+	}
+
+}
