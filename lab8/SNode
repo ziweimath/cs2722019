@@ -1,0 +1,48 @@
+
+public class SNode<E> {
+	private E data;
+	private SNode<E> link;
+	
+	// constructor 
+	public SNode() {
+		data = null;
+		link = null;
+	}
+	
+	// constructor
+	
+	public SNode(E _data, SNode<E> _link) {
+		data = _data;
+		link = _link;
+	}
+	/**
+	 * the getData function gives the value in this node
+	 * @return the value in the node
+	 */
+	public E getData() {
+		return data;
+	}
+	/**
+	 * the getLink function givens the link in this node
+	 * @return the link in this node
+	 */
+	public SNode<E> getLink() {
+		return link;
+	}
+	/**
+	 * The setData function set the given value to the node
+	 * @param _data the given value will set to the node
+	 */
+	public void setData(E _data) {
+		data = _data;
+	}
+	/**
+	 * The function setLink sets the link with the given link
+	 * @param _link the given link will set to the node
+	 */
+	public void setLink(SNode<E> _link) {
+		link = _link;
+	}
+	
+	
+}
