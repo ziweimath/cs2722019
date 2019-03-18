@@ -1,0 +1,88 @@
+
+public class LinkedQueue<E> implements QueueInterface<E>  {
+	private SNode<E> front;
+	private SNode<E> rear;
+	private int num;
+	
+	/**
+	 * No argument constructors
+	 */
+	public LinkedQueue(){
+		front = new SNode<E>();
+		rear = new SNode<E>();
+		front.setLink(rear);
+		num = 0;
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public LinkedQueue(E e) {
+		rear = new SNode<E>();
+		front = new SNode<E>(e,rear);
+		num = 1;
+		
+	}
+	
+	/**
+	 *  Insert element e at the rear of the queue
+	 * @param e the new value should input into the rear of the queue
+	 */
+	public void enqueue(E e) {
+		SNode<E> cursor = front;
+		while (cursor != rear) {
+			cursor = cursor.getLink();
+		}
+		SNode<E> newNode = new SNode<E>(e,rear);
+		cursor.setLink(newNode);
+		num++;
+	}
+
+	/**
+	 * Remove the element at the front of the queue;
+	 * @return the value at the front of the queue which will be removed.
+	 */
+	public E dequeue() {
+		if (front==null) return null;
+		E answer = front.getData();
+		front = front.getLink();
+		num = num-1;
+		return answer;
+	}
+
+	/**
+	 * Return a reference to the front element in the queue; Do not remove this element; 
+	 * an error occursif the queue is empty
+	 */
+	public E front() {
+		// TODO Auto-generated method stub
+		if (front== null) return null;
+		E answer = front.getData();
+		return answer;
+	}
+
+	/**
+	 * @return Return the number of elements in the queue
+	 */
+	public int size() {
+		// TODO Auto-generated method stub
+		return num;
+	}
+
+	/**
+	 * Return true if the queue is empty and false otherwise
+	 */
+	public boolean isEmpty() {
+		return num==0;
+	}
+	
+	public String toString() {
+		String answer = "";
+		SNode<E> cursor = front;
+		while (cursor != null)
+			answer = answer + cursor.getData();
+		return answer;
+	}
+
+}
