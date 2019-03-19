@@ -8,9 +8,8 @@ public class LinkedQueue<E> implements QueueInterface<E>  {
 	 * No argument constructors
 	 */
 	public LinkedQueue(){
-		front = new SNode<E>();
-		rear = new SNode<E>();
-		front.setLink(rear);
+		rear = new SNode(null,null);
+		front = new SNode(null,rear);
 		num = 0;
 	}
 	
@@ -25,17 +24,30 @@ public class LinkedQueue<E> implements QueueInterface<E>  {
 		
 	}
 	
+	public SNode<E> getFront(){
+		return front;
+	}
+	
+	public SNode<E> getRear(){
+		return rear;
+	}
+	
+	public void  setFront(SNode<E> _link){
+		front = _link;
+	}
+	
+	public void  setRear(SNode<E> _link){
+		rear = _link;
+	}
 	/**
 	 *  Insert element e at the rear of the queue
 	 * @param e the new value should input into the rear of the queue
 	 */
 	public void enqueue(E e) {
-		SNode<E> cursor = front;
-		while (cursor != rear) {
-			cursor = cursor.getLink();
-		}
-		SNode<E> newNode = new SNode<E>(e,rear);
-		cursor.setLink(newNode);
+		SNode cursor=front;
+		while(cursor.getLink()!=rear) cursor = cursor.getLink();
+		cursor = new SNode(e,rear);
+		//rear = rear.getLink();
 		num++;
 	}
 
