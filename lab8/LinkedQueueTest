@@ -1,10 +1,18 @@
 
+
 public class LinkedQueueTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LinkedQueue<String> que1 = new LinkedQueue("A");
-		System.out.println("The element in que1 is "+que1);
+		//LinkedQueue<String> que1 = new LinkedQueue("A");
+		//System.out.println("The element in que1 is "+que1.getData());
+		LinkedQueue<Integer> que2 = new LinkedQueue<Integer>();
+		que2.enqueue(1);
+		//System.out.println("The element in que1 is "+que2.getRear().getData());
+		que2.enqueue(2);
+		//System.out.println("The element in que1 is "+que2.getRear().getData());
+		System.out.println("The element in que1 is "+que2.getRear().getData());
+		
 	}
 
 }
