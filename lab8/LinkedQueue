@@ -1,4 +1,5 @@
 
+
 public class LinkedQueue<E> implements QueueInterface<E>  {
 	private SNode<E> front;
 	private SNode<E> rear;
@@ -8,8 +9,8 @@ public class LinkedQueue<E> implements QueueInterface<E>  {
 	 * No argument constructors
 	 */
 	public LinkedQueue(){
-		rear = new SNode(null,null);
-		front = new SNode(null,rear);
+		rear = null;
+		front = null;
 		num = 0;
 	}
 	
@@ -44,11 +45,16 @@ public class LinkedQueue<E> implements QueueInterface<E>  {
 	 * @param e the new value should input into the rear of the queue
 	 */
 	public void enqueue(E e) {
-		SNode cursor=front;
-		while(cursor.getLink()!=rear) cursor = cursor.getLink();
-		cursor = new SNode(e,rear);
-		//rear = rear.getLink();
-		num++;
+		if (front == null || rear == null) {
+			front = new SNode<E>(e, null);
+			rear = front;
+			num = 1;
+		}
+		else {
+			rear.setLink(new SNode<E>(e, null));
+			rear = rear.getLink();
+			num++;
+		}
 	}
 
 	/**
