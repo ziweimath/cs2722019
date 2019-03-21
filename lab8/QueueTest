@@ -1,0 +1,58 @@
+public class QueueTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//LinkedQueue<String> que1 = new LinkedQueue("A");
+		//System.out.println("The element in que1 is "+que1.getData());
+		LinkedQueue<Integer> que2 = new LinkedQueue<Integer>();
+		System.out.println("Is que2 an empty queue?\n  "+que2.isEmpty());
+		que2.enqueue(1);
+		System.out.println("The element in the front of que2 is \n"+que2.getFront().getData());
+		System.out.println("The element in the rear of que2 is \n"+que2.getRear().getData());
+		System.out.println("Is que2 an empty queue? \n "+que2.isEmpty());
+		System.out.println("After enqueue(1), the size of que2 is \n"+que2.size());
+		que2.enqueue(2);
+		System.out.println("After enqueue(2) que2, the element in the front of que2 is \n"+que2.getFront().getData());
+		System.out.println("After enqueue()2 que2, the element in the rear of que2 is \n "+que2.getRear().getData());
+		System.out.println("Is que2 an empty queue? \n "+que2.isEmpty());
+		System.out.println("After enqueue(2), the size of que2 is\n"+que2.size());
+		que2.dequeue();
+		System.out.println("After dequeue que2, the element in the front of que2 is\n"+que2.getFront().getData());
+		System.out.println("After dequeue que2, the element in the rear of que2 is\n"+que2.getRear().getData());
+		System.out.println("After dequeue que2, is que2 an empty queue?\n"+que2.isEmpty());
+		System.out.println("After dequeue que2, the size of que2 is \n "+que2.size());
+		que2.dequeue();
+		//System.out.println("The element in que1 is "+que2.getFront().getData());
+		//System.out.println("The element in que1 is "+que2.getRear().getData());
+		System.out.println("After dequeue que2, is que2 an empty queue?\n"+que2.isEmpty());
+		System.out.println("After dequeue que2, the size of que2 is \n"+que2.size());
+		
+		ArrayQueue<String> que3 = new ArrayQueue<String>();
+		System.out.println("Is the new defined que3 an empty queue?\n"+que3.isEmpty());
+		System.out.println("The new defined que3 had size \n "+que3.size());
+		que3.enqueue("A");
+		System.out.println("After enqueue(A), is que3 an empty queue?\n"+que3.isEmpty());
+		System.out.println("After enqueue(A), the size of que3 is \n"+que3.size());
+		System.out.println("After enqueue(A), the front element in que3 is \n"+que3.front());
+		que3.dequeue();
+		System.out.println("After dequeue, is que3 an empty queue?\n"+que3.isEmpty());
+		System.out.println("After dequeue, the size of que3 is \n"+que3.size());
+		System.out.println("After dequeue, the front element in que3 is \n"+que3.front());
+		que3.enqueue("B");
+		que3.enqueue("C");
+		que3.enqueue("D");
+		System.out.println("After enqueue(B), is que3 an empty queue?\n"+que3.isEmpty());
+		System.out.println("After enqueue(B), the size of que3 is \n"+que3.size());
+		System.out.println("After enqueue(B), the front element in que3 is \n"+que3.front());
+		que3.dequeue();
+		System.out.println("After dequeue, is que3 an empty queue?\n"+que3.isEmpty());
+		System.out.println("After dequeue, the size of que3 is \n"+que3.size());
+		System.out.println("After dequeue, the front element in que3 is \n"+que3.front());
+		que3.dequeue();
+		System.out.println("After dequeue, is que3 an empty queue?\n"+que3.isEmpty());
+		System.out.println("After dequeue, the size of que3 is \n"+que3.size());
+		System.out.println("After dequeue, the front element in que3 is \n"+que3.front());
+		
+	}
+
+}
