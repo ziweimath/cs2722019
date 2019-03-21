@@ -1,5 +1,3 @@
-
-
 public class LinkedQueue<E> implements QueueInterface<E>  {
 	private SNode<E> front;
 	private SNode<E> rear;
@@ -71,7 +69,7 @@ public class LinkedQueue<E> implements QueueInterface<E>  {
 
 	/**
 	 * Return a reference to the front element in the queue; Do not remove this element; 
-	 * an error occursif the queue is empty
+	 * an error occurs if the queue is empty
 	 */
 	public E front() {
 		// TODO Auto-generated method stub
