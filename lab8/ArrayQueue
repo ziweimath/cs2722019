@@ -1,0 +1,66 @@
+
+public class ArrayQueue<E> implements QueueInterface<E>  {
+	private int front;
+	private int rear;
+	private E[] data;
+	private int num;
+	
+	/**
+	 * Constructor
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayQueue() {
+		front = null;
+		rear = null;
+		data = (E[]) new Object[10];
+		num = 0;
+	}
+	
+	public void ensureCapacity() {
+		@SuppressWarnings("unchecked")
+		E[] temp = (E[]) new Object[2*data.length];
+		for (int i =0; i<=num;i++) {
+			temp[i] = data[i];
+		}
+		data = temp;
+		front = 0;
+		rear = num-1;
+	}
+	
+	@Override
+	public void enqueue(E e) {
+		if (num==data.length) this.ensureCapacity();
+		data[rear]=e;
+		rear++;
+		num++;
+	}
+
+	@Override
+	public E dequeue() {
+		// TODO Auto-generated method stub
+		
+		E answer = data[front];
+		front++;
+		
+		return null;
+	}
+
+	@Override
+	public E front() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
