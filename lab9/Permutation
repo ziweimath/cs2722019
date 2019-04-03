@@ -1,0 +1,43 @@
+import java.util.Arrays;
+
+public class Permutation {
+	/**
+	 * 
+	 * @param data the given integer array
+	 * @param l the starting position
+	 * @param r the end position
+	 */
+	public static void permute(int[] data,int l, int r) 
+    { 
+		if (l == r) 
+            System.out.println(Arrays.toString(data)); 
+        else
+        { 
+            for (int i = l; i <= r; i++) 
+            { 
+                data = swap(data,l,i); 
+                permute(data,l+1,r); 
+                data = swap(data,l,i); 
+            } 
+        } 
+    } 
+	
+	/**
+	 * This function will just do the permutation between two fixed positions
+	 * @param a the given data array
+	 * @param i the starting position
+	 * @param j the end position
+	 * @return the permuted data for the fixed two positions
+	 */
+	 public static int[] swap(int[] a,int i, int j) 
+	    { 
+	        int temp; 
+	        int[] dataArray = a; 
+	        temp = dataArray[i] ; 
+	        dataArray[i] = dataArray[j]; 
+	        dataArray[j] = temp; 
+	        return dataArray; 
+	    } 
+	
+	
+}
