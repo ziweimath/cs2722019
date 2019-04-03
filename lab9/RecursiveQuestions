@@ -1,0 +1,130 @@
+import java.util.Arrays;
+
+public class RecursiveQuestions {
+	/**
+	 * 
+	 * @param k the index for the Fibonacci sequence
+	 * @return the k-th element in Fibonacci sequence
+	 */
+	public static int FibBinaryRecursive(int k) {
+		if (k==0 || k==1) return k; // base case: k=0 and k=1
+		else 
+			// the general case
+			return (FibBinaryRecursive(k-1)+FibBinaryRecursive(k-2)); 
+	}
+	
+
+	/**
+	 * 
+	 * @param n the number of plates
+	 * @param string the name for the initial stick
+	 * @param string2 the name for the destination stick
+	 * @param string3 the name for the auxiliary stick
+	 */
+	public static void towerOfHanoi(int n, String string, String string2, String string3) 
+	    { 
+	        if (n == 1) // the base case, there is only one plate
+	        { 
+	            System.out.println("Move disk " + n + "\n"+  string + " -> " + string2); 
+	            return; 
+	        } 
+	        
+	        // general case
+	        towerOfHanoi(n-1, string, string3, string2); 
+	        System.out.println("Move disk " + n + "\n"+   string + " -> " + string2); 
+	        towerOfHanoi(n-1, string3, string2, string); 
+	    } 
+	
+	public static String showCallLevel(int L, int curl) {
+	
+		String a1 = "";
+
+		String a2 = "";
+
+		for (int i=0; i<curl; i ++) {
+			a2 = a2 + "  ";
+		}
+		if (L==curl) return a2 + "This is written by call "+L+"x\n"+ a2 + "This is written by call "+L+"y\n";
+	
+		if (L > curl) {
+		
+			a1 = a2 + "this is written by call " + curl + "x\n";
+			a1 = a1 + showCallLevel(L, curl+1);
+			a1 = a1 + a2 + "his is written by call " + curl + "x\n";
+		}
+		return a1;
+	
+//	else 
+//	    
+//		{
+//	   
+//	    return "  "+"This is written by call "+L+"x\n"+showCallLevel(L-1,1)+"  "+"This is written by call "+L+"y\n";
+//	        
+//	  
+//		 }
+
+	}
+	
+	public static void pattern(int indicate, int length) {
+		String a1 = "";
+		for (int i=0; i<indicate; i++) {
+			a1 = a1 + " ";
+		}
+		
+		if (length == 1) {
+			System.out.println(a1 + "*");
+			return;
+		}
+		
+		pattern(indicate, length/2);
+		
+		String p = a1;
+		for (int i=0; i<length; i++) {
+			p = p + "*";
+		}
+		System.out.println(p);
+		pattern(indicate + (length/2), length/2);
+		
+		
+	}
+	
+	/**
+	 * 
+	 * @param n the given number to be converted to binary expression
+	 */
+	public static void BinaryPrint (int n) {
+		
+		if (n==0) System.out.print(0);
+		else if(n==1) System.out.print(1);
+		else 
+		{
+			BinaryPrint(n/2);
+			System.out.print(n%2);
+		}
+		
+		
+	}
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		for(int k=0;k<10;k++)
+		System.out.println("The "+k+"th Fibonacci number is "+ FibBinaryRecursive(k));
+		towerOfHanoi(7,"A","B","C");
+		BinaryPrint(8);
+		System.out.println();
+		BinaryPrint(0);
+		System.out.println();
+		BinaryPrint(1);
+		System.out.println();
+		BinaryPrint(16);
+		//String p3= showCallLevel(4,2);
+		//System.out.println("\n"+p3);
+		//int[] testPermute = {1,2,5,10};
+		//permute(testPermute,0,3);
+		//System.out.println();
+		//pattern(4, 8);
+	}
+
+}
