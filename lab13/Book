@@ -1,0 +1,161 @@
+import java.util.Arrays;
+
+public class Book {
+	private String BookTitle;
+	private int AuthorNumber;
+	private String[] BookAuthors = new String[3];
+	private String ISBN;
+
+
+/**
+* #1 Constructor 1.  The no-argument constructor
+*
+**/
+
+public Book() {
+	BookTitle = null;
+	AuthorNumber = 0;
+	ISBN = null;
+	
+}
+
+/**
+* #2 Constructor 2.  One argument constructor
+*
+**/
+public Book(String _BookTitle) {
+	BookTitle = _BookTitle;
+	AuthorNumber = 0;
+	ISBN = null;
+}
+
+/**
+* #3 Constructor 3.  copy constructor
+*
+**/
+public Book(Object obj) {
+	if (obj != null && obj instanceof Book) {
+		
+		Book obj_book = (Book)obj;
+		ISBN = obj_book.ISBN;
+		BookTitle = obj_book.BookTitle;
+		AuthorNumber = obj_book.AuthorNumber;
+		for (int i=0; i<obj_book.getAuthorNumber(); i ++) {
+			BookAuthors[i] = obj_book.BookAuthors[i];
+		}
+	}
+	
+	
+}
+
+/**
+* #4 Methods 1: getTitle
+*
+**/
+public String getTitle() {
+	return BookTitle;
+}
+
+/**
+* #5 Methods 2: getAuthorNumber
+*
+**/
+public int getAuthorNumber() {
+	return AuthorNumber;
+}
+
+/**
+* #6 Methods 3: getISBN
+*
+**/
+public String getISBN() {
+	return ISBN;
+}
+
+/**
+* #7 Methods 4: setBookTitle
+*
+**/
+public void setTitle (String _BookTitle) {
+	BookTitle = _BookTitle;
+}
+
+/**
+* #8 Methods 5: setISBN
+*
+**/
+public void setISBN (String _ISBN) {
+	ISBN = _ISBN;
+}
+
+/**
+* #9 Methods 6: addAuthor
+*
+**/
+public boolean addAuthor(String _BookAuthors) {
+	if (AuthorNumber<3) {
+		BookAuthors[AuthorNumber] = _BookAuthors;
+		AuthorNumber ++;
+		return true;
+	}
+	return false;
+}
+
+/**
+* #10 Methods 6: equals methods
+*
+**/
+public boolean equals(Object obj) {
+	if (obj != null && obj instanceof Book) {
+		Book candidate = (Book) obj;
+		return (candidate.ISBN==ISBN);
+	}
+	else 
+		return false;
+	
+}
+
+/**
+* #11 Methods 7: getAllAuthors
+*
+**/
+public static String[] getAllAuthors(Book b1, Book b2) {
+	if (b1 == null|| b2 == null)
+	{
+		return null; 
+	}
+	String[] array = new String[b1.getAuthorNumber() + b2.getAuthorNumber()];
+	for (int i=0; i<b1.getAuthorNumber(); i++) {
+		array[i] = b1.BookAuthors[i];
+	}
+	int already = b1.getAuthorNumber();
+	for (int i=0; i<b2.getAuthorNumber(); i++) {
+		boolean add = true;
+		for (int j=0; j<b1.getAuthorNumber(); j++) {
+			if (b1.BookAuthors[j] == b2.BookAuthors[i]) {
+				add = false;
+				break;
+			}
+		}
+		
+		if (add == true)
+		array[i+already] = b2.BookAuthors[i];
+	}
+	return array;
+}
+	
+
+/**
+* #12 Methods 8: 
+*
+**/
+public String toString() {
+	String names = "";
+	for (int i=0; i<this.getAuthorNumber(); i++) {
+		names = names + " " + this.BookAuthors[i];
+	}
+	return "The title is "+ BookTitle + "\nISNB is "+ ISBN+ "\nThe number of authors is "+ AuthorNumber + " \nNames: " + names;
+}
+
+
+}
