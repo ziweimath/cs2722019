@@ -1,161 +1,79 @@
-import java.util.Arrays;
-
-public class Book {
-	private String BookTitle;
-	private int AuthorNumber;
-	private String[] BookAuthors = new String[3];
-	private String ISBN;
-
-
-/**
-* #1 Constructor 1.  The no-argument constructor
-*
-**/
-
-public Book() {
-	BookTitle = null;
-	AuthorNumber = 0;
-	ISBN = null;
-	
-}
-
-/**
-* #2 Constructor 2.  One argument constructor
-*
-**/
-public Book(String _BookTitle) {
-	BookTitle = _BookTitle;
-	AuthorNumber = 0;
-	ISBN = null;
-}
-
-/**
-* #3 Constructor 3.  copy constructor
-*
-**/
-public Book(Object obj) {
-	if (obj != null && obj instanceof Book) {
-		
-		Book obj_book = (Book)obj;
-		ISBN = obj_book.ISBN;
-		BookTitle = obj_book.BookTitle;
-		AuthorNumber = obj_book.AuthorNumber;
-		for (int i=0; i<obj_book.getAuthorNumber(); i ++) {
-			BookAuthors[i] = obj_book.BookAuthors[i];
-		}
+import java.util.ArrayList;
+public class MinHeap {
+	private ArrayList<Integer> heap;
+	/**
+	 * the no argument constructor initialize an arraylist
+	 */
+	public MinHeap() {
+		heap = new ArrayList<Integer>();
 	}
-	
-	
-}
-
-/**
-* #4 Methods 1: getTitle
-*
-**/
-public String getTitle() {
-	return BookTitle;
-}
-
-/**
-* #5 Methods 2: getAuthorNumber
-*
-**/
-public int getAuthorNumber() {
-	return AuthorNumber;
-}
-
-/**
-* #6 Methods 3: getISBN
-*
-**/
-public String getISBN() {
-	return ISBN;
-}
-
-/**
-* #7 Methods 4: setBookTitle
-*
-**/
-public void setTitle (String _BookTitle) {
-	BookTitle = _BookTitle;
-}
-
-/**
-* #8 Methods 5: setISBN
-*
-**/
-public void setISBN (String _ISBN) {
-	ISBN = _ISBN;
-}
-
-/**
-* #9 Methods 6: addAuthor
-*
-**/
-public boolean addAuthor(String _BookAuthors) {
-	if (AuthorNumber<3) {
-		BookAuthors[AuthorNumber] = _BookAuthors;
-		AuthorNumber ++;
-		return true;
+	/**
+	 * get method
+	 */
+	public ArrayList<Integer> get(){
+		return heap;
 	}
-	return false;
-}
-
-/**
-* #10 Methods 6: equals methods
-*
-**/
-public boolean equals(Object obj) {
-	if (obj != null && obj instanceof Book) {
-		Book candidate = (Book) obj;
-		return (candidate.ISBN==ISBN);
-	}
-	else 
-		return false;
-	
-}
-
-/**
-* #11 Methods 7: getAllAuthors
-*
-**/
-public static String[] getAllAuthors(Book b1, Book b2) {
-	if (b1 == null|| b2 == null)
-	{
-		return null; 
-	}
-	String[] array = new String[b1.getAuthorNumber() + b2.getAuthorNumber()];
-	for (int i=0; i<b1.getAuthorNumber(); i++) {
-		array[i] = b1.BookAuthors[i];
-	}
-	int already = b1.getAuthorNumber();
-	for (int i=0; i<b2.getAuthorNumber(); i++) {
-		boolean add = true;
-		for (int j=0; j<b1.getAuthorNumber(); j++) {
-			if (b1.BookAuthors[j] == b2.BookAuthors[i]) {
-				add = false;
-				break;
+	/**
+	 * add method
+	 * @param e the integer to be added into the heap
+	 */
+	public void add(int e) {
+		// put the element into the heap
+		heap.add(e);
+		// reheap 
+		int index = heap.size()-1;
+		while (index !=0) {
+			if (heap.get(index)>heap.get((int) Math.floor((index-1)/2))) {
+				swap(index);
+				index = (int)Math.floor((index-1)/2);
 			}
+			else return;
 		}
 		
-		if (add == true)
-		array[i+already] = b2.BookAuthors[i];
 	}
-	return array;
-}
+	private void swap(int index) {
+		// TODO Auto-generated method stub
+		int temp = heap.get(index);
+		int pare = heap.get((int)Math.floor((index-1)/2));
+		heap.set(index,pare );
+		heap.set((int)Math.floor((index-1)/2), temp);
+	}
+	/**
+	 * remove method
+	 * @return the top element of the heap
+	 */
+	public int remove() {
+		// special case: null heap
+		if (heap==null || heap.isEmpty()==true) return (Integer) null;
+		else {
+			// get the top element of the heap;
+			int top = heap.get(0);
+			// move the last node onto the root;
+			heap.set(0, heap.get(heap.size()-1));
+			// remove the last node
+			heap.remove(heap.size()-1);
+			// push the out-of-place node downward
+			int index = 0;
+			while(heap.get(index)<heap.get(2*index+1)||heap.get(index)<heap.get(2*index+2)) {
+				if (heap.get(index)<heap.get(2*index+1)) {
+					swap(2*index+1);
+					index = 2*index+1;
+				}
+				else {
+					swap(2*index+2);
+					index = 2*index+2;
+				}
+			}
+		return top;
+		}
+	}
 	
-
-/**
-* #12 Methods 8: 
-*
-**/
-public String toString() {
-	String names = "";
-	for (int i=0; i<this.getAuthorNumber(); i++) {
-		names = names + " " + this.BookAuthors[i];
+	/**
+	 * top method
+	 */
+	public int top() {
+		// special case
+		if (heap==null || heap.isEmpty()==true) return (Integer) null;
+		else return heap.get(0);
 	}
-	return "The title is "+ BookTitle + "\nISNB is "+ ISBN+ "\nThe number of authors is "+ AuthorNumber + " \nNames: " + names;
-}
-
-
 }
