@@ -1,0 +1,15 @@
+
+public class search {
+	public static int binarySearch (int[] A, int e) {
+			int resultPos = binarySearch(int[] A, 0, A.length-1,e);
+			return resultPos;
+	}
+	
+	private static int binarySearch(int[]array, int idxs, int idxe, int searche){
+		if(idxe<idxs) return (-1);
+		int idx_middle = (idxe+idxs)/2;
+		if(array[idx_middle]==searche) return idx_middle;
+		else if(searche<array[idx_middle]) return binarySearch(array,idxs,idx_middle-1,searche);
+		else return binarySearch(array,idx_middle+1,idxe,searche);
+	}
+}
