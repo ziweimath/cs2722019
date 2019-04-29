@@ -1,0 +1,16 @@
+
+public class BookTable {
+	int number;
+	private Object key;
+	private Book book;
+	/**
+	 * Constructor
+	 */
+	public BookTable() {
+		number = 0;
+		key = null;
+		book = null;
+		}
+	
+	
+}
