@@ -1,0 +1,34 @@
+
+
+public class MinHeapTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MinHeap myHeap1 = new MinHeap();
+		myHeap1.add(1200);
+		System.out.println(myHeap1.get());
+		myHeap1.add(140);
+		System.out.println(myHeap1.get());
+		myHeap1.add(160);
+		System.out.println(myHeap1.get());
+		myHeap1.add(110);
+		myHeap1.add(102);
+		System.out.println(myHeap1.get());
+		myHeap1.add(140);
+		System.out.println(myHeap1.get());
+		myHeap1.add(106);
+		System.out.println(myHeap1.get());
+		myHeap1.add(101);
+		
+		System.out.println(myHeap1.get());
+		myHeap1.remove();
+		System.out.println(myHeap1.get());
+		myHeap1.remove();
+		System.out.println(myHeap1.top());
+		System.out.println(myHeap1.get());
+		myHeap1.remove();
+		System.out.println(myHeap1.top());
+		System.out.println(myHeap1.get());
+	}
+
+}
