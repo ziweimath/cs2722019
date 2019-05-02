@@ -1,16 +1,98 @@
 
+
 public class BookTable {
-	int number;
-	private Object key;
-	private Book book;
+	private int number;
+	private int[] key;
+	private Book[] book;
+	private boolean[] used;
 	/**
 	 * Constructor
 	 */
 	public BookTable() {
 		number = 0;
-		key = null;
-		book = null;
+		key = new int[10];
+		book  = new Book[10];
+		used = new boolean[10];
+		for (int i=0; i<10; i++) {
+			used[i] = false;
 		}
-	
-	
+	}
+	private int hash(int ISBN) {
+		return  ISBN%key.length;
+	}
+	/**
+	 * put method
+	 * @param e
+	 */
+	public void put(Book e) {
+		int ISBN = e.getISBN();
+		// special case
+		if (number == key.length) {
+			ensureCapacity();
+			
+		}
+		int idx = hash(ISBN);
+		if (used[idx]==true) {
+			while(used[idx]==true) idx = (idx+1) % key.length;
+			key[idx]=ISBN;
+			book[idx]=e;
+			used[idx]=true;
+			number++;
+		}
+		else {
+			key[idx]=ISBN;
+			book[idx]=e;
+			used[idx]=true;
+			number++;
+		}
+	}
+	/**
+	 * ensureCapacity method when the hashtable is full, we need call this method to 
+	 * double the table.
+	 */
+	private void ensureCapacity() {
+		int[] newkey = new int[2*number];
+		Book[] newbook = new Book[2*number];
+		boolean[] newused = new boolean[2*number];
+		for(int i = 0; i <number;i++) {
+			newkey[i]=key[i];
+			newbook[i]=book[i];
+			newused[i]=used[i];
+		}
+		key = newkey;
+		book = newbook;
+		used = newused;
+	}
+	/**
+	 * remove method
+	 */
+	public boolean remove(int ISBN) {
+		int exist = search(ISBN);
+		if (exist==-1) {
+			System.out.println("The item does not exist. \nNothing removed!");
+			return false;
+		}
+		else {
+			key[exist]=-1;
+			book[exist]=null;
+			used[exist]=false;
+			number--;
+			System.out.println("The item found and removed!");
+			return true;
+		}
+		
+	}
+	/**
+	 * search method
+	 */
+	public int search(int ISBN) {
+		int idx = hash(ISBN);
+		if (used[idx]==true && book[idx].getISBN()==ISBN) return idx;
+		else {
+			for (int i=1;i<number-1;i++) {
+				if (used[idx+i]==true &&book[(idx+i)%key.length].getISBN()==ISBN) return idx+i;
+			}
+			return -1;
+		}
+	}
 }
