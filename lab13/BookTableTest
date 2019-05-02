@@ -1,0 +1,29 @@
+
+public class BookTableTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Book book1 = new Book("My First ABC Book!");
+		Book book2 = new Book("My Second ABC Book!");
+		Book book3 = new Book("My Third ABC Book!");
+		Book book4 = new Book("My Fourth ABC Book!");
+		book1.setISBN(1235);
+		book2.setISBN(99999);
+		book3.setISBN(1234);
+		book4.setISBN(99998);
+		BookTable myBookTable = new BookTable();
+		myBookTable.put(book4);
+		myBookTable.put(book3);
+		myBookTable.put(book2);
+		myBookTable.put(book1);
+		System.out.println(myBookTable.search(99999));
+		System.out.println(myBookTable.search(99998));
+		System.out.println(myBookTable.search(1234));
+		System.out.println(myBookTable.search(123));
+		System.out.println(myBookTable.search(12));
+		myBookTable.remove(1234);
+		System.out.println(myBookTable.search(1234));
+		myBookTable.remove(12);
+	}
+
+}
